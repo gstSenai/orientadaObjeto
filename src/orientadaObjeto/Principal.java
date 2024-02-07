@@ -1,45 +1,76 @@
 package orientadaObjeto;
 
+import java.util.Scanner;
+
 public class Principal {
 
 	public static void main(String[] args) {
-
-		System.out.println ( "Informe o nome do aluno: " );
-       
+		
+		Scanner sc = new Scanner(System.in);
 		Scanner teclado = new Scanner(System.in);
-        
-		//Criar um objeto da classe Aluno:
 		Aluno aluno1 = new Aluno();
-        //Atribuindo o dado ao nome:
-        aluno1.nome = teclado.nextLine();
-        do{
-        System.out.println ( "Informe a senha: " );
-        }while ( aluno1.verificaSenha(teclado.next()) !=true );
-        //Perguntar o e-mail de novo se inválido?
-        do{
-        System.out.println ( "Informe o e-mail: " );
-        } while(aluno1.verificaEmail(teclado.next())!= true);
+		Professor professor = new Professor();
+		Cursos cursos1 = new Cursos();
+		String cadastro;
+		
+		System.out.println("Informe o que deseja cadastrar" +
+						   "\n1-Professor" +
+						   "\n2-Aluno "+
+						   "\n3-Curso: ");
+		cadastro = sc.next();
+		
+		if( cadastro .equals ("Aluno") || cadastro.equals("2")) {
+
+			System.out.println ( "Informe o nome do aluno: " );
+			aluno1.nome = teclado.next();
         
-        System.out.println(aluno1.mostrarDados());
-
-        System.out.println ( "Informe a quantidade de Alunos no Curso: " );
-        //Criar um objeto da classe Aluno:
-        Cursos cursos1 = new Cursos();
-        //Atribuindo o dado ao nome:
-        cursos1.quantidadeAlunos = teclado.nextLine();
-
-        System.out.println ( "Informe o tempo do curso(HORAS): " );
-        cursos1.tempo = teclado.nextLine();
-        System.out.println ( "Informe o nome do curso: " );
-        cursos1.nomeCurso = teclado.nextLine();
-
-        System.out.println(cursos1.mostrarDados2());
-
-    }
-
-}
+        do{
+        	System.out.println ( "Informe o e-mail: " );
+        	
+        	}while(aluno1.verificaEmail(teclado.next())!= true);
+        
+        do{
+        	System.out.println ( "Informe a senha: " );
+        	
+        		}while ( aluno1.verificaSenhaAluno(teclado.next()) !=true );
+		}
 		
+		else if(cadastro .equals("Professor") || cadastro .equals("1")) {
+			
+			System.out.println ( "Informe o nome do Professor: " );
+	        professor.nome = teclado.next();
+	        
+	        do{
+	        	System.out.println ( "Informe o e-mail: " );
+	        
+	        	} while(aluno1.verificaEmail(teclado.next())!= true);
+	        
+	        do{
+	       
+	        	System.out.println ( "Informe a senha: " );
+	        	
+	        	}while ( professor.verificaSenhaProfessor(teclado.next()) !=true );
+			}
 		
+		else if(cadastro .equals("curso") || cadastro .equals("3")) {
+			
+			System.out.println ("INFOMAÇÕES DO CURSO: ");
+			System.out.print ("---------------------- ");
+			System.out.println ( "\nInforme a quantidade de Alunos no Curso: " );
+			cursos1.quantidadeAlunos = teclado.next();
+			System.out.println ( "Informe o tempo do curso(HORAS): " );
+	        cursos1.tempo = teclado.next();
+	        System.out.println ( "Informe o nome do curso: " );
+	        cursos1.nomeCurso = teclado.next();
+
+	        System.out.println(cursos1.mostrarDadosCurso());
+	        teclado.close();
+	        sc.close();
+		}
+        else {
+			System.out.println ("CADASTRO INVÁLIDO");
+		}
 	}
 
 }
+

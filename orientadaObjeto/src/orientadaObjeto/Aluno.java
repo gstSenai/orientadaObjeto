@@ -22,7 +22,14 @@ public class Aluno {
             return false;
         }
     }
-    public boolean verificaSenhaAluno(String senha)  {
+    public String mostrarDados(){
+        
+        String dados = "Nome: " + nome;
+                        
+    return dados;
+
+    }
+    public boolean verificaSenha(String senha)  {
 
         if(senha.length() >= 6){
            char[] senha1 = new char [senha.length()];

@@ -1,16 +1,14 @@
 package orientadaObjeto;
 
-public class Aluno {
-
-	//Atributos:
-
-    String nome;
-    String senha;
-    String email; 
-    String serie;
-    //Métodos (funções):
-
-    public boolean verificaEmail (String email) {
+public class Professor {
+	
+	String nome;
+	String email;
+	String senha;
+	String numeroIdentificacao;
+	String telefone;
+	
+	public boolean verificaEmail (String email) {
 
         if(email.contains("@")){
             this.email = email;
@@ -22,7 +20,7 @@ public class Aluno {
             return false;
         }
     }
-    public boolean verificaSenhaAluno(String senha)  {
+    public boolean verificaSenhaProfessor(String senha)  {
 
         if(senha.length() >= 6){
            char[] senha1 = new char [senha.length()];
@@ -61,4 +59,3 @@ public class Aluno {
         return false;
     }
 }
-
