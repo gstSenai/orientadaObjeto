@@ -4,12 +4,12 @@ public class Aluno {
 
 	//Atributos:
 
-    String nome;
     String senha;
     String email; 
     String serie;
+    String nome[] = new String [10];
     //Métodos (funções):
-
+    
     public boolean verificaEmail (String email) {
 
         if(email.contains("@")){

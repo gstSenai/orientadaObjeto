@@ -11,19 +11,29 @@ public class Principal {
 		Aluno aluno1 = new Aluno();
 		Professor professor = new Professor();
 		Cursos cursos1 = new Cursos();
-		String cadastro;
+		int cadastro;
+		int quantAlunos = 0, contP = 0, contF = 0;
+		
+		do {
 		
 		System.out.println("Informe o que deseja cadastrar" +
 						   "\n1-Professor" +
 						   "\n2-Aluno "+
-						   "\n3-Curso: ");
-		cadastro = sc.next();
+						   "\n3-Curso " +
+						   "\n4-Chamada "+
+						   "\n0-Sair");
+		cadastro = sc.nextInt();
 		
-		if( cadastro .equals ("Aluno") || cadastro.equals("2")) {
+		if( cadastro == 2) {
+			
+			System.out.println("Digite a quantidade alunos que deseja cadastrar: ");
+			quantAlunos = sc.nextInt();
+			
+			for(int cont = 0; cont < quantAlunos; cont ++) {
 
 			System.out.println ( "Informe o nome do aluno: " );
-			aluno1.nome = teclado.next();
-        
+			aluno1.nome[cont] = sc.next();
+			        
         do{
         	System.out.println ( "Informe o e-mail: " );
         	
@@ -33,9 +43,10 @@ public class Principal {
         	System.out.println ( "Informe a senha: " );
         	
         		}while ( aluno1.verificaSenhaAluno(teclado.next()) !=true );
+			}
 		}
 		
-		else if(cadastro .equals("Professor") || cadastro .equals("1")) {
+		else if( cadastro == 1 ) {
 			
 			System.out.println ( "Informe o nome do Professor: " );
 	        professor.nome = teclado.next();
@@ -52,7 +63,7 @@ public class Principal {
 	        	}while ( professor.verificaSenhaProfessor(teclado.next()) !=true );
 			}
 		
-		else if(cadastro .equals("curso") || cadastro .equals("3")) {
+		else if( cadastro == 3 ) {
 			
 			System.out.println ("INFOMAÇÕES DO CURSO: ");
 			System.out.print ("---------------------- ");
@@ -67,10 +78,40 @@ public class Principal {
 	        teclado.close();
 	        sc.close();
 		}
-        else {
-			System.out.println ("CADASTRO INVÁLIDO");
-		}
-	}
+		else if(cadastro == 4) {
+			
+			for ( int cont = 0; cont < quantAlunos; cont ++ ) {
+				for(int cont2 = 0; cont2 < 1; cont2 ++) {
+					
+					System.out.println("CHAMADA Aluno: " + aluno1.nome[cont] +
+									   "\n1-Presente" +
+									   "\n2-Faltou: ");
+					int chamada = sc.nextInt();
+					
+					if(chamada == 1) {
+						System.out.println(aluno1.nome[cont] + " ESTÁ PRESENTE");
+						contP ++;
+					}
+					else if(chamada == 2) {
+						System.out.println(aluno1.nome[cont] + " NÃO ESTÁ PRESENTE");
+						contF ++;
+					}
+					else {
+						System.out.println("ERRO");
+					}
+				}
+			}
+			System.out.println("ESTÃO PRESENTES " + contP + " Alunos");
+			System.out.println("ESTÃO FALTANDO " + contF + " Alunos");
 
+			
+		}
+        else {
+			
+        	System.out.println ("ENCERROU O PROGRAMA");
+			
+        	}
+		}while( cadastro != 0 );
+	}
 }
 
